@@ -19,11 +19,10 @@ export const startAddColumnist = (columnistData = {}) => {
         const columnist = {name, nick, amount, noColumns};
 
         database.ref(`columnist`).push(columnist).then((ref) => {
-            const cid = ref.key;
-
-            return database.ref(`editors/${eid}`).set(cid).then(() => {
+            const id = ref.key;
+            return database.ref(`editors/${eid}`).push({id}).then(() => {
                 dispatch(addColumnist({
-                    id: cid,
+                    id: id,
                     ...columnist
                 }));
             });

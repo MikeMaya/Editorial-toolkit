@@ -7,7 +7,7 @@ export default class ColumnistForm extends React.Component {
             name: props.columnist? props.columnist.name : "",
             nick: props.columnist? props.columnist.nick : "",
             noColumns: props.columnist? props.columnist.noColumns.toString() : "0",
-            amount: props.columnist? (props.columnist.amount / 100).toString() : "0.00",
+            amount: props.columnist? (props.columnist.amount / 100).toString() : "0",
             error: ""
         };
     };
@@ -31,7 +31,7 @@ export default class ColumnistForm extends React.Component {
 
     onAmountChange = (e) => {
         const amount = e.target.value;
-        if(amount.match(/^\d{1,}$/)){
+        if(amount.match(/^\d{1,}(\.\d{0,2})?$/)){
             this.setState(() => ({amount}));
         }
     };
@@ -71,7 +71,7 @@ export default class ColumnistForm extends React.Component {
                 <input 
                     type="text"
                     placeholder="Numero de columnas"
-                    value={this.state.value}
+                    value={this.state.noColumns}
                     onChange={this.onNoColumnsChange}
                 />
                 <input
