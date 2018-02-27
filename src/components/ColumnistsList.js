@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ColumnistsList = () => (
     <div>
-        <button>Agregar Columnista</button>
+        <Link to="/addColumnist">Agregar Columnista</Link>
+
     </div>
 );
+
+//Pendiente la implementacion de la lista de columnistas
 
 export default ColumnistsList;

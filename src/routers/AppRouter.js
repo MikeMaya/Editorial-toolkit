@@ -6,6 +6,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import DashBoardPage from '../components/DashBoardPage';
 import LoginPage from '../components/LoginPage';
+import AddColumnist from '../components/AddColumnist';
 import ColumnistsList from '../components/ColumnistsList';
 import PaymentsList from '../components/PaymentsList';
 import Calendar from '../components/Calendar';
@@ -18,6 +19,7 @@ const AppRouter = () => (
             <Switch>
                 <PublicRoute path="/" component={LoginPage} exact={true}/>
                 <PrivateRoute path="/dashboard" component={DashBoardPage}/>
+                <PrivateRoute path="/addColumnist" component={AddColumnist}/>
                 <PrivateRoute path="/columnists" component={ColumnistsList}/>
                 <PrivateRoute path="/payments" component={PaymentsList}/>
                 <PrivateRoute path="/calendar" component={Calendar}/>
