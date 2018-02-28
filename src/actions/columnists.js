@@ -12,20 +12,21 @@ export const startAddColumnist = (columnistData = {}) => {
         const {
             name = "",
             nick = "",
+            email = "", 
+            telephone = "",
             amount = 0,
-            noColumns = 0
+            noColumns = 0,
+            notes = {},
+            payments = {}
         } = columnistData;
 
-        const columnist = {name, nick, amount, noColumns};
+        const columnist = {name, nick, email, telephone, amount, noColumns, notes, payments};
 
-        database.ref(`columnist`).push(columnist).then((ref) => {
-            const id = ref.key;
-            return database.ref(`editors/${eid}`).push({id}).then(() => {
-                dispatch(addColumnist({
-                    id: id,
-                    ...columnist
-                }));
-            });
+        return database.ref(`editors/${eid}/${nick}`).set(columnist).then((ref) => {
+            dispatch(addColumnist({
+                nick,
+                ...columnist
+            }));
         });
     };
 };
@@ -40,3 +41,28 @@ export const removeColumnist = (id) => ({
     type: "REMOVE_COLUMNIST",
     id
 });
+
+
+export const setColumnists = (columnists) => ({
+    type: "SET_COLUMNISTS",
+    columnists
+});
+
+export const startSetColumnists = () => {
+    return (dispatch, getState) => {
+        const columnists = [];
+        const eid = getState().auth.uid;
+
+        return database.ref(`editors/${eid}`).once('value').then((snapshot) => {
+            snapshot.forEach((child) => {
+                columnists.push({
+                    nick: child.key,
+                    name: child.val().name,
+                    noColumns: child.val().noColumns,
+                    amount: child.val().amount
+                })
+            });
+            dispatch(setColumnists(columnists));
+        });
+    };
+};

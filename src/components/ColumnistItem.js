@@ -1,7 +1,10 @@
 import React from 'react';
 
-const ColumnistItem = () => (
+const ColumnistItem = ({nick, name, amount, noColumns}) => (
     <div>
-        La informacion del columnistas
+        <h1> {name} - {nick}</h1>
+        <p>Pago: {amount} - Columnas: {noColumns}</p>
     </div>
 );
+
+export default ColumnistItem;

@@ -15,6 +15,8 @@ export default (state = {}, action) => {
             });
         case "REMOVE_COLUMNIST":
             return state.filter((columnist) => action.id != columnist.id);
+        case "SET_COLUMNISTS":
+            return action.columnists;
         default: 
             return state;
     };

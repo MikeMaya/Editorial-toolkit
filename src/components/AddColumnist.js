@@ -6,7 +6,7 @@ import { startAddColumnist } from '../actions/columnists';
 export class AddColumnist extends React.Component {
     onSubmit = (columnist) => {
         this.props.startAddColumnist(columnist);
-        this.props.history.push("/");
+        this.props.history.push("/columnists");
     };
     render() {
         return (

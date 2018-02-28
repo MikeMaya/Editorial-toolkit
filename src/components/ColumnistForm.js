@@ -6,8 +6,10 @@ export default class ColumnistForm extends React.Component {
         this.state = {
             name: props.columnist? props.columnist.name : "",
             nick: props.columnist? props.columnist.nick : "",
-            noColumns: props.columnist? props.columnist.noColumns.toString() : "0",
-            amount: props.columnist? (props.columnist.amount / 100).toString() : "0",
+            email: props.columnist? props.columnist.email : "",
+            telephone: props.columnist? props.columnist.telephone : "",
+            noColumns: props.columnist? props.columnist.noColumns.toString() : "",
+            amount: props.columnist? (props.columnist.amount / 100).toString() : "",
             error: ""
         };
     };
@@ -22,6 +24,14 @@ export default class ColumnistForm extends React.Component {
         this.setState(() => ({ nick }));
     };
 
+    onEmailChange = (e)  => {
+        const email = e.target.value;
+        this.setState(()=> ({email}));
+    }
+    onTelephoneChange = (e) => {
+        const telephone = e.target.value;
+        this.setState(() => ({telephone}));
+    }
     onNoColumnsChange = (e) => {
         const noColumns = e.target.value;
         if(noColumns.match(/^\d{1,}$/)){
@@ -67,6 +77,18 @@ export default class ColumnistForm extends React.Component {
                     placeholder="Nick"
                     value={this.state.value}
                     onChange={this.onNickChange}
+                />
+                <input 
+                    type="email"
+                    placeholder="email@example.com"
+                    value={this.state.email}
+                    onChange={this.onEmailChange}
+                />
+                <input 
+                    type="text"
+                    placeholder="Telefono"
+                    value={this.state.telephone}
+                    onChange={this.onTelephoneChange}
                 />
                 <input 
                     type="text"
