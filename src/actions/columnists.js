@@ -46,10 +46,19 @@ export const startEditColumnist = (nick, updates) => {
     }
 };
 
-export const removeColumnist = (id) => ({
+export const removeColumnist = (nick) => ({
     type: "REMOVE_COLUMNIST",
-    id
+    nick
 });
+
+export const startRemoveColumnist = (nick) => {
+    return (dispatch, getState) => {
+        const eid = getState().auth.uid;
+        return database.ref(`editors/${eid}/${nick}`).remove().then(() => {
+            dispatch(removeColumnist(nick));
+        });
+    };
+}
 
 
 export const setColumnists = (columnists) => ({

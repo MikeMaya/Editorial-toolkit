@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startEditColumnist } from '../actions/columnists';
+import { startEditColumnist, startRemoveColumnist } from '../actions/columnists';
 import ColumnistForm from './ColumnistForm';
 
 export class EditColumnist extends React.Component {
@@ -8,7 +8,10 @@ export class EditColumnist extends React.Component {
         this.props.startEditColumnist(this.props.columnist.nick, columnist);
         this.props.history.push("/columnists");
     }
-
+    onClick = () => {
+        this.props.startRemoveColumnist(this.props.columnist.nick);
+        this.props.history.push("/columnists");
+    }
     render () {
         return (
             <div>
@@ -17,6 +20,7 @@ export class EditColumnist extends React.Component {
                     columnist = {this.props.columnist}
                     onSubmit = {this.onSubmit}
                 />
+                <button onClick= {this.onClick}>Remover Columnista</button>
             </div>
         );
     }
@@ -30,7 +34,8 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        startEditColumnist: (nick, columnist) =>  dispatch(startEditColumnist(nick, columnist))
+        startEditColumnist: (nick, columnist) =>  dispatch(startEditColumnist(nick, columnist)),
+        startRemoveColumnist: (nick) => dispatch(startRemoveColumnist(nick))
     };
 };
 

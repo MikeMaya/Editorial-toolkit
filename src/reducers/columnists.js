@@ -14,7 +14,7 @@ export default (state = {}, action) => {
                 }
             });
         case "REMOVE_COLUMNIST":
-            return state.filter((columnist) => action.id != columnist.id);
+            return state.filter((columnist) => action.nick != columnist.nick);
         case "SET_COLUMNISTS":
             return action.columnists;
         default: 
