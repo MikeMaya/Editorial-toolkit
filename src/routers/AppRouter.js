@@ -7,6 +7,7 @@ import PublicRoute from './PublicRoute';
 import DashBoardPage from '../components/DashBoardPage';
 import LoginPage from '../components/LoginPage';
 import AddColumnist from '../components/AddColumnist';
+import EditColumnist from '../components/EditColumnist';
 import ColumnistsList from '../components/ColumnistsList';
 import PaymentsList from '../components/PaymentsList';
 import Calendar from '../components/Calendar';
@@ -20,6 +21,7 @@ const AppRouter = () => (
                 <PublicRoute path="/" component={LoginPage} exact={true}/>
                 <PrivateRoute path="/dashboard" component={DashBoardPage}/>
                 <PrivateRoute path="/addColumnist" component={AddColumnist}/>
+                <PrivateRoute path="/editColumnist/:nick" component={EditColumnist}/>
                 <PrivateRoute path="/columnists" component={ColumnistsList}/>
                 <PrivateRoute path="/payments" component={PaymentsList}/>
                 <PrivateRoute path="/calendar" component={Calendar}/>

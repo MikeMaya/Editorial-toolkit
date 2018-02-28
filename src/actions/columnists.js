@@ -31,11 +31,20 @@ export const startAddColumnist = (columnistData = {}) => {
     };
 };
 
-export const editColumnist = (id, updates) => ({
+export const editColumnist = (nick, updates) => ({
     type: "EDIT_COLUMNIST",
-    id,
+    nick,
     updates
 });
+
+export const startEditColumnist = (nick, updates) => {
+    return (dispatch, getState) => {
+        const eid = getState().auth.uid;
+        return database.ref(`editors/${eid}/${nick}`).update(updates).then(() => {
+            dispatch(editColumnist(nick, updates));
+        });
+    }
+};
 
 export const removeColumnist = (id) => ({
     type: "REMOVE_COLUMNIST",

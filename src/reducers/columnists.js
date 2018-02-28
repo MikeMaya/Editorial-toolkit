@@ -7,7 +7,7 @@ export default (state = {}, action) => {
             ];
         case "EDIT_COLUMNIST": //Pendiente de implementar
             return state.map((columnist) => {
-                if(columnist.id === action.id){
+                if(columnist.nick === action.nick){
                     return {...columnist, ...action.updates};
                 } else {
                     return columnist;

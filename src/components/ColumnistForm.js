@@ -75,6 +75,7 @@ export default class ColumnistForm extends React.Component {
                 <input
                     type="text"
                     placeholder="Nick"
+                    disabled={!!this.props.columnist}
                     value={this.state.value}
                     onChange={this.onNickChange}
                 />
