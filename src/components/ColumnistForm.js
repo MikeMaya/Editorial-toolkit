@@ -55,17 +55,20 @@ export default class ColumnistForm extends React.Component {
             this.props.onSubmit({
                 name: this.state.name,
                 nick: this.state.nick,
-                noColumns: parseInt(this.state.noColumns, 10),
-                amount: parseFloat(this.state.amount, 10) *100
+                email: !this.state.email? "":this.state.email,
+                telephone: !this.state.telephone? "": this.state.telephone, 
+                noColumns: !this.state.noColumns? 0:parseInt(this.state.noColumns, 10),
+                amount: !this.state.amount? 0:parseFloat(this.state.amount, 10) *100
             });
         }
     };
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
+            <form className="form" onSubmit={this.onSubmit}>
                 { !!this.state.error && <p className="form__error"> {this.state.error}</p>}
                 <input 
+                    className="text-input"
                     autoFocus
                     type="text"
                     placeholder="Nombre"
@@ -73,37 +76,44 @@ export default class ColumnistForm extends React.Component {
                     onChange={this.onNameChange}
                 />
                 <input
+                    className="text-input"
                     type="text"
                     placeholder="Nick"
                     disabled={!!this.props.columnist}
-                    value={this.state.value}
+                    value={this.state.nick}
                     onChange={this.onNickChange}
                 />
                 <input 
+                    className="text-input"
                     type="email"
                     placeholder="email@example.com"
                     value={this.state.email}
                     onChange={this.onEmailChange}
                 />
                 <input 
+                    className="text-input"
                     type="text"
                     placeholder="Telefono"
                     value={this.state.telephone}
                     onChange={this.onTelephoneChange}
                 />
                 <input 
+                    className="text-input"
                     type="text"
                     placeholder="Numero de columnas"
                     value={this.state.noColumns}
                     onChange={this.onNoColumnsChange}
                 />
                 <input
+                    className="text-input"
                     type="text"
                     placeholder="Pago acumulado"
                     value={this.state.amount}
                     onChange={this.onAmountChange}
                 />
-                <button>Salvar Cambios</button>
+                <div>
+                    <button className="button">Salvar Cambios</button>
+                </div>
             </form>
         );
     }

@@ -1,7 +1,9 @@
 .page-header {
+    justify-content: center;
     background: $off-white;
     padding: $l-size 0;
     margin-bottom: $l-size;
+    display: flex;
 }
 
 .page_header__actions{
@@ -9,7 +11,7 @@
 }
 
 .page-header__title{
-    font-weight: 300;
+    font-weight: 600;
     margin: 0;
     span {
         font-weight: 700;

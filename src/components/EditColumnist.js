@@ -6,21 +6,26 @@ import ColumnistForm from './ColumnistForm';
 export class EditColumnist extends React.Component {
     onSubmit = (columnist) => {
         this.props.startEditColumnist(this.props.columnist.nick, columnist);
-        this.props.history.push("/columnists");
+        this.props.history.push("/dashboard");
     }
     onClick = () => {
         this.props.startRemoveColumnist(this.props.columnist.nick);
-        this.props.history.push("/columnists");
+        this.props.history.push("/dashboard");
     }
     render () {
         return (
             <div>
-                <h1> Editar Columnista</h1>
-                <ColumnistForm 
-                    columnist = {this.props.columnist}
-                    onSubmit = {this.onSubmit}
-                />
-                <button onClick= {this.onClick}>Remover Columnista</button>
+                <div className="page-header">
+                    <h1 className="page-header__title"> Editar Columnista</h1>
+                </div>
+                <div className="content-container">
+                    <ColumnistForm 
+                        columnist = {this.props.columnist}
+                        onSubmit = {this.onSubmit}
+                    />
+                    <button className="button button--secondary" onClick={this.onClick}>Remover Columnista</button>
+                </div>
+                
             </div>
         );
     }

@@ -1,5 +1,6 @@
 .header {
     background: $dark-blue;
+    //background: url('/image/Header.png');;
 }
 
 .header__content{
@@ -15,4 +16,11 @@
     h1{
         margin: 0;
     }
+}
+
+.header__subtitle{
+    color: white;
+    font-style: italic;
+    font-weight: bolder;
+    text-decoration: none;   
 }

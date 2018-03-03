@@ -58,8 +58,7 @@ export const startRemoveColumnist = (nick) => {
             dispatch(removeColumnist(nick));
         });
     };
-}
-
+};
 
 export const setColumnists = (columnists) => ({
     type: "SET_COLUMNISTS",
@@ -79,7 +78,7 @@ export const startSetColumnists = () => {
                     noColumns: child.val().noColumns,
                     amount: child.val().amount
                 })
-            });
+            });            
             dispatch(setColumnists(columnists));
         });
     };

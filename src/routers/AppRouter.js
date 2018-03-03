@@ -14,6 +14,10 @@ import Calendar from '../components/Calendar';
 
 export const history = createHistory();
 
+//<PrivateRoute path="/columnists" component={ColumnistsList}/>
+//<PrivateRoute path="/payments" component={PaymentsList}/>
+//<PrivateRoute path="/calendar" component={Calendar}/>
+
 const AppRouter = () => (
     <Router history={history}>
         <div>
@@ -22,9 +26,6 @@ const AppRouter = () => (
                 <PrivateRoute path="/dashboard" component={DashBoardPage}/>
                 <PrivateRoute path="/addColumnist" component={AddColumnist}/>
                 <PrivateRoute path="/editColumnist/:nick" component={EditColumnist}/>
-                <PrivateRoute path="/columnists" component={ColumnistsList}/>
-                <PrivateRoute path="/payments" component={PaymentsList}/>
-                <PrivateRoute path="/calendar" component={Calendar}/>
                 <Route component={NotFoundPage}/>
             </Switch>
         </div>
