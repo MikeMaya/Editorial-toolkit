@@ -1,9 +1,18 @@
 import React from 'react';
 
-const PaymentsList = () => (
-    <div>
-        Pagos del año, mes y otros
-    </div>
-);
+class PaymentsList extends React.Component{
+    
+    render() {
+        return (
+            <div>
+                <button>Reporte Mensual</button>
+                <button>Reporte Anual</button>
+                <button>Reporte Global</button>
+                <button>Resumen de columnistas</button>
+                <button>Generar pagos</button>
+            </div>
+        );
+    };
+};
 
 export default PaymentsList;
