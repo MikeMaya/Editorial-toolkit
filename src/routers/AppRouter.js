@@ -9,7 +9,7 @@ import LoginPage from '../components/LoginPage';
 import AddColumnist from '../components/AddColumnist';
 import EditColumnist from '../components/EditColumnist';
 import ColumnistsList from '../components/ColumnistsList';
-import PaymentsList from '../components/PaymentsList';
+import PaymentsPage from '../components/PaymentsPage';
 import Calendar from '../components/Calendar';
 
 export const history = createHistory();

@@ -2,7 +2,7 @@ import React from 'react';
 import DashboardMenu from './DashboardMenu';
 import ColumnistsList from './ColumnistsList';
 import Calendar from './Calendar';
-import PaymentsList from './PaymentsList';
+import PaymentsPage from './PaymentsPage';
 
 class DashBoardPage extends React.Component {
     state = {
@@ -10,15 +10,12 @@ class DashBoardPage extends React.Component {
     };
     onChangeColumnists = () =>{
         this.setState(() => ({sec: "columnists"}));
-        console.log(this.state);
     };
     onChangeCalendar = () =>{
         this.setState(() => ({sec: "calendar"}));
-        console.log(this.state);
     };
     onChangePayments = () =>{
         this.setState(() => ({sec: "payments"}));
-        console.log(this.state);
     };
     render() {
         return (
@@ -30,7 +27,7 @@ class DashBoardPage extends React.Component {
                 />
                 {this.state.sec === "columnists" && <ColumnistsList />}
                 {this.state.sec === "calendar" && <Calendar />}
-                {this.state.sec === "payments" && <PaymentsList />}
+                {this.state.sec === "payments" && <PaymentsPage />}
             </div>
         );
     }
