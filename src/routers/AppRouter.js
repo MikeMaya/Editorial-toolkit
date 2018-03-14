@@ -4,26 +4,23 @@ import createHistory from 'history/createBrowserHistory';
 import NotFoundPage from '../components/NotFoundPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import DashBoardPage from '../components/DashBoardPage';
 import LoginPage from '../components/LoginPage';
 import AddColumnist from '../components/AddColumnist';
 import EditColumnist from '../components/EditColumnist';
-import ColumnistsList from '../components/ColumnistsList';
+import ColumnistsPage from '../components/ColumnistsPage';
 import PaymentsPage from '../components/PaymentsPage';
-import Calendar from '../components/Calendar';
+import CalendarPage from '../components/CalendarPage';
 
 export const history = createHistory();
-
-//<PrivateRoute path="/columnists" component={ColumnistsList}/>
-//<PrivateRoute path="/payments" component={PaymentsList}/>
-//<PrivateRoute path="/calendar" component={Calendar}/>
 
 const AppRouter = () => (
     <Router history={history}>
         <div>
             <Switch>
                 <PublicRoute path="/" component={LoginPage} exact={true}/>
-                <PrivateRoute path="/dashboard" component={DashBoardPage}/>
+                <PrivateRoute path="/columnists" component={ColumnistsPage}/>
+                <PrivateRoute path="/payments" component={PaymentsPage}/>
+                <PrivateRoute path="/calendar" component={CalendarPage}/>
                 <PrivateRoute path="/addColumnist" component={AddColumnist}/>
                 <PrivateRoute path="/editColumnist/:nick" component={EditColumnist}/>
                 <Route component={NotFoundPage}/>

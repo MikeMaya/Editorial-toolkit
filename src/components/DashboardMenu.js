@@ -1,12 +1,13 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { startLogout } from '../actions/auth';
 import { connect } from 'react-redux';
 
 const DashboardMenu = ({onChangeColumnists, onChangePayments, onChangeCalendar, startLogout}) => (
     <div className="bar-menu">
-        <button className="button button--menu" onClick={onChangeColumnists} >Columnistas</button>
-        <button className="button button--menu" onClick={onChangePayments} >Pagos</button>
-        <button className="button button--menu" onClick={onChangeCalendar} >Calendario</button>
+        <NavLink className="button button--menu" to="/columnists">Columnistas</NavLink>
+        <NavLink className="button button--menu" to="/payments">Pagos</NavLink>
+        <NavLink className="button button--menu" to="/columnists">Calendar</NavLink>
         <button className="button button--menu" onClick={startLogout}>Salir</button>
     </div>
 );

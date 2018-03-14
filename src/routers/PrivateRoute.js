@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
+import DashboardMenu from '../components/DashboardMenu';
 import { Route, Redirect } from 'react-router-dom';
 
 export const PrivateRoute = ({
@@ -13,6 +14,7 @@ export const PrivateRoute = ({
         isAuthenticated ? (
             <div>
                 <Header />
+                <DashboardMenu />
                 <Component {...props}/>
             </div>
         ) : (

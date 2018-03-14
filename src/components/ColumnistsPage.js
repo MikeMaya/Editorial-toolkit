@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ColumnistItem from './ColumnistItem';
 
-const ColumnistsList = (props) => (
+const ColumnistsPage = (props) => (
     <div className="content-container">
         <div className="list-header">
             <div className="show-for-mobile">Columnistas</div>
@@ -33,4 +33,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(ColumnistsList);
+export default connect(mapStateToProps)(ColumnistsPage);
