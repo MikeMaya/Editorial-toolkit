@@ -7,14 +7,14 @@ export default (state = {}, action) => {
             ];
         case "EDIT_COLUMNIST": //Pendiente de implementar
             return state.map((columnist) => {
-                if(columnist.nick === action.nick){
+                if(columnist.id === action.id){
                     return {...columnist, ...action.updates};
                 } else {
                     return columnist;
                 }
             });
         case "REMOVE_COLUMNIST":
-            return state.filter((columnist) => action.nick != columnist.nick);
+            return state.filter((columnist) => action.id != columnist.id);
         case "SET_COLUMNISTS":
             return action.columnists;
         default: 

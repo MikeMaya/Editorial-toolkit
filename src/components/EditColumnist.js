@@ -5,12 +5,12 @@ import ColumnistForm from './ColumnistForm';
 
 export class EditColumnist extends React.Component {
     onSubmit = (columnist) => {
-        this.props.startEditColumnist(this.props.columnist.nick, columnist);
-        this.props.history.push("/dashboard");
+        this.props.startEditColumnist(this.props.columnist.id, columnist);
+        this.props.history.push("/");
     }
     onClick = () => {
-        this.props.startRemoveColumnist(this.props.columnist.nick);
-        this.props.history.push("/dashboard");
+        this.props.startRemoveColumnist(this.props.columnist.id);
+        this.props.history.push("/");
     }
     render () {
         return (
@@ -32,8 +32,9 @@ export class EditColumnist extends React.Component {
 };
 
 const mapStateToProps = (state, props) => {
+    console.log(state.columnists);
     return {
-        columnist: state.columnists.find((columnist) => columnist.nick === props.match.params.nick)
+        columnist: state.columnists.find((columnist) => columnist.id === props.match.params.id)
     };
 };
 

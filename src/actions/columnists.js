@@ -10,6 +10,7 @@ export const startAddColumnist = (columnistData = {}) => {
     return (dispatch, getState) => {
         const eid = getState().auth.uid;
         const {
+            id = "",
             name = "",
             nick = "",
             email = "", 
@@ -22,7 +23,7 @@ export const startAddColumnist = (columnistData = {}) => {
 
         const columnist = {name, nick, email, telephone, amount, noColumns, notes, payments};
 
-        return database.ref(`editors/${eid}/${nick}`).set(columnist).then((ref) => {
+        return database.ref(`editors/${eid}/${id}`).set(columnist).then((ref) => {
             dispatch(addColumnist({
                 nick,
                 ...columnist
@@ -31,31 +32,31 @@ export const startAddColumnist = (columnistData = {}) => {
     };
 };
 
-export const editColumnist = (nick, updates) => ({
+export const editColumnist = (id, updates) => ({
     type: "EDIT_COLUMNIST",
-    nick,
+    id,
     updates
 });
 
-export const startEditColumnist = (nick, updates) => {
+export const startEditColumnist = (id, updates) => {
     return (dispatch, getState) => {
         const eid = getState().auth.uid;
-        return database.ref(`editors/${eid}/${nick}`).update(updates).then(() => {
-            dispatch(editColumnist(nick, updates));
+        return database.ref(`editors/${eid}/${id}`).update(updates).then(() => {
+            dispatch(editColumnist(id, updates));
         });
     }
 };
 
-export const removeColumnist = (nick) => ({
+export const removeColumnist = (id) => ({
     type: "REMOVE_COLUMNIST",
-    nick
+    id
 });
 
-export const startRemoveColumnist = (nick) => {
+export const startRemoveColumnist = (id) => {
     return (dispatch, getState) => {
         const eid = getState().auth.uid;
-        return database.ref(`editors/${eid}/${nick}`).remove().then(() => {
-            dispatch(removeColumnist(nick));
+        return database.ref(`editors/${eid}/${id}`).remove().then(() => {
+            dispatch(removeColumnist(id));
         });
     };
 };
@@ -73,7 +74,8 @@ export const startSetColumnists = () => {
         return database.ref(`editors/${eid}`).once('value').then((snapshot) => {
             snapshot.forEach((child) => {
                 columnists.push({
-                    nick: child.key,
+                    id: child.key,
+                    nick: child.val().nick,
                     name: child.val().name,
                     noColumns: child.val().noColumns,
                     amount: child.val().amount

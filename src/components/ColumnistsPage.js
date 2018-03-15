@@ -11,14 +11,13 @@ const ColumnistsPage = (props) => (
             <div className="show-for-desktop">Pagos - Columnas</div>
         </div>
         <div className="list-body">
-            {console.log(props.columnists)}
             {props.columnists.length === 0 ? (
                 <div className="list-item list-item--message">
                     <span>Sin columnistas por el momento. Registralos ahora!</span>
                 </div>
             ) : (
                 props.columnists.map((columnist) => 
-                    <ColumnistItem key={columnist.nick} {...columnist}/>
+                    <ColumnistItem key={columnist.id} {...columnist}/>
                 )
             )}
         </div>

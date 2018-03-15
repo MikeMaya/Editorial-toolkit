@@ -4,6 +4,7 @@ export default class ColumnistForm extends React.Component {
     constructor (props){
         super (props);
         this.state = {
+            id: props.columnist? props.columnist.id : "",
             name: props.columnist? props.columnist.name : "",
             nick: props.columnist? props.columnist.nick : "",
             email: props.columnist? props.columnist.email : "",
@@ -20,8 +21,8 @@ export default class ColumnistForm extends React.Component {
     };
 
     onNickChange = (e) => {
-        const nick = e.target.value;
-        this.setState(() => ({ nick }));
+        const id = e.target.value;
+        this.setState(() => ({ id }));
     };
 
     onEmailChange = (e)  => {
@@ -48,15 +49,18 @@ export default class ColumnistForm extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        if(!this.state.name || !this.state.nick){
-            this.setState(() => ({error: "Ingresa un Nombre y Nick"}));      
+        if(!this.state.name || !this.state.id){
+            this.setState(() => ({error: "Ingresa un Nombre"}));      
         }else {
+            const nick = this.props.columnist? this.props.nick : 
+                this.props.columnistsData.find((columnist) => columnist.id===this.state.id).nick;
             this.setState(() => ({error: ""}));
             this.props.onSubmit({
+                id: this.state.id,
                 name: this.state.name,
-                nick: this.state.nick,
-                email: !this.state.email? "":this.state.email,
-                telephone: !this.state.telephone? "": this.state.telephone, 
+                nick,
+                email: !this.state.email? "Sin especificar":this.state.email,
+                telephone: !this.state.telephone? "Sin especificar": this.state.telephone, 
                 noColumns: !this.state.noColumns? 0:parseInt(this.state.noColumns, 10),
                 amount: !this.state.amount? 0:parseFloat(this.state.amount, 10) *100
             });
@@ -75,14 +79,25 @@ export default class ColumnistForm extends React.Component {
                     value={this.state.name}
                     onChange={this.onNameChange}
                 />
-                <input
-                    className="text-input"
-                    type="text"
-                    placeholder="Nick"
-                    disabled={!!this.props.columnist}
-                    value={this.state.nick}
-                    onChange={this.onNickChange}
-                />
+                {
+                    this.props.columnist? (
+                        <input 
+                            className="text-input"
+                            disabled="true"
+                            type="text"
+                            placeholder="Nick"
+                            value={this.state.nick}
+                        />
+                    ):(
+                        <select
+                            onChange={this.onNickChange}
+                        >
+                            {this.props.columnistsData.map((user) => (
+                                <option key={user.id} value={user.id}>{user.nick}</option>
+                            ))}
+                        </select>
+                    )
+                }
                 <input 
                     className="text-input"
                     type="email"

@@ -22,7 +22,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/payments" component={PaymentsPage}/>
                 <PrivateRoute path="/calendar" component={CalendarPage}/>
                 <PrivateRoute path="/addColumnist" component={AddColumnist}/>
-                <PrivateRoute path="/editColumnist/:nick" component={EditColumnist}/>
+                <PrivateRoute path="/editColumnist/:id" component={EditColumnist}/>
                 <Route component={NotFoundPage}/>
             </Switch>
         </div>

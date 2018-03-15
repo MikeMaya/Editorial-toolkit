@@ -22,7 +22,7 @@ export default class ScriptLoader{
                 const users = responseJson.map((resp) => ({
                     id: resp.id,
                     data: {
-                        nickname: resp.name,
+                        nick: resp.name,
                         slug: resp.slug
                     }
                 }));
@@ -43,7 +43,7 @@ export default class ScriptLoader{
             const categories = responseJson.map((resp) => ({
                 id: resp.id,
                 data: {
-                    nickname: resp.name,
+                    name: resp.name,
                     slug: resp.slug
                 }
             }));
