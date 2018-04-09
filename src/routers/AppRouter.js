@@ -10,10 +10,11 @@ import EditColumnist from '../components/EditColumnist';
 import ColumnistsPage from '../components/ColumnistsPage';
 import PaymentsPage from '../components/PaymentsPage';
 import CalendarPage from '../components/CalendarPage';
+import SideBar from '../components/SideBar';
 
 export const history = createHistory();
 
-const AppRouter = () => (
+const AppRouter = (props) => (
     <Router history={history}>
         <div>
             <Switch>

@@ -18,8 +18,10 @@ export class AddColumnist extends React.Component {
     
     onSubmit = (columnist) => {
         console.log(columnist);
-        this.props.startAddColumnist(columnist);
-        this.props.history.push("/");
+        this.props.startAddColumnist(columnist).then(() => (
+            this.props.history.push("/")
+        ));
+        
     };
     render() {
         return (
@@ -28,7 +30,10 @@ export class AddColumnist extends React.Component {
                     <h1 className="page-header__title">Agregar un Columnista</h1>
                 </div>
                 <div className="content-container" >                
-                    {this.state.ready && <ColumnistForm onSubmit={this.onSubmit} columnistsData={this.props.users}/>}        
+                    {this.state.ready && 
+                        <ColumnistForm 
+                            onSubmit={this.onSubmit} 
+                            columnistsData={this.props.users}/>}        
                 </div>
             </div>
         );

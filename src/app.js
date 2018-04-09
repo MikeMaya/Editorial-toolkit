@@ -10,7 +10,9 @@ import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css'
 import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ScriptLoader from './script';
+
 const loader = new ScriptLoader;
 loader.load_database();
 
@@ -18,9 +20,11 @@ loader.load_database();
 const store = configureStore();
 
 const jsx = (
-    <Provider store = {store}>
-        <AppRouter />
-    </Provider>
+    <MuiThemeProvider>
+        <Provider store = {store}>
+            <AppRouter />
+        </Provider>
+    </MuiThemeProvider>
 
 );
 

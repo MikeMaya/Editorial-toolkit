@@ -19,6 +19,7 @@ export default class ScriptLoader{
         return fetch(this.state.usersRoute+query)
           .then((response) => response.json())
           .then((responseJson) => {
+                console.log(responseJson)
                 const users = responseJson.map((resp) => ({
                     id: resp.id,
                     data: {

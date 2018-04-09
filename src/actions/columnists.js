@@ -21,13 +21,10 @@ export const startAddColumnist = (columnistData = {}) => {
             payments = {}
         } = columnistData;
 
-        const columnist = {name, nick, email, telephone, amount, noColumns, notes, payments};
+        const columnist = {id, name, nick, email, telephone, amount, noColumns, notes, payments};
 
         return database.ref(`editors/${eid}/${id}`).set(columnist).then((ref) => {
-            dispatch(addColumnist({
-                nick,
-                ...columnist
-            }));
+            dispatch(addColumnist(columnist));
         });
     };
 };
